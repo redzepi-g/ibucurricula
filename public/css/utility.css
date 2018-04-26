@@ -1,0 +1,15 @@
+/* bkgs */
+.bkg-gold{
+    background-color: rgba(237, 195, 59, 0.8);
+}
+
+.bkg-white{
+    background-color:white;
+    border: 0.35px solid black;
+}
+
+/* padding */
+.extra-padding-25{
+    padding:25px;
+}
+

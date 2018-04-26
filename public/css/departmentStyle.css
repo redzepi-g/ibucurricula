@@ -1,0 +1,13 @@
+body{
+    background-color:rgba(237, 195, 59, 1);
+}
+
+/* year boxes */
+.year-box:hover{
+    border-right: 5px solid red;
+    cursor: pointer;
+}
+
+.year-box.active{
+    border-right: 5px solid red;
+}

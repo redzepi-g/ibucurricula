@@ -67,12 +67,17 @@
 
     <div class="col-md-10 bkg-white"> <!-- courses selection col -->
         
-        <div class="row" id="course-row-fall"> <!-- sub row -->
+        <div class="row"> <!-- sub row -->
             
-            <div class="col-md-12"> <!-- sub col -->
+            <div class="col-md-12" id="course-col"> <!-- sub col -->
                 <p class="text-center font-italic text-capitalize">{{$semester}} Semester</p>
                 
-                <div class="card" style="width: 18rem;">
+                <form action="#" method="post" id="course-form">
+                    @csrf
+
+                <div class="form-row" id="course-row">
+                
+                <div class="card" id="dummy-course" style="width: 18rem;">
                         <img class="card-img-top" src="http://via.placeholder.com/286x180" alt="Card image cap">
                         <div class="card-body text-center">
         
@@ -80,6 +85,15 @@
                             <button type="button" id="add-course"><i class="fas fa-plus"></i></button>
                         </div>
                 </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-warning">Save</button>
+                    </div>  
+                </div>
+
+                </form>
             </div> <!-- sub col end -->
 
 

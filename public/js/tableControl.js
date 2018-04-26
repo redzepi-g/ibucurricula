@@ -5,21 +5,19 @@ $(document).ready(function(){
 
     //get addCourse button
     let btnAddCourse = document.getElementById("add-course");
+    let btnRemoveCourse = document.getElementById("remove-course");
 
     //get the form row
     let courseRow = document.getElementById("course-row");
 
+
     //add course body
     function addCourse(courseCount){
-        
-        //remove the addCourse
-        let dummyCourse = document.getElementById("dummy-course");
-        dummyCourse.remove();
 
         //create the card div
         let course = document.createElement("div");
         course.setAttribute("class","card");
-        course.setAttribute("id","course-id");
+        course.setAttribute("id",`course-${courseCount}`);
         course.setAttribute("style","width:18rem;");
 
         //create the img div
@@ -40,9 +38,25 @@ $(document).ready(function(){
         input.setAttribute("name","course[]");
 
         //populate the select
-        let foreachOption = "{{$semester}}"
-
-        input.innerHTML = foreachOption;
+        //get the api data
+        $.ajax({ 
+            type: 'GET', 
+            url: 'http://localhost/ibucurricula/public/api/department-1', 
+            data: { get_param: 'value' }, 
+            dataType: 'json',
+            success: function (data) { 
+                $.each(data, function(index, element) {
+                    
+                    if(element.semester == 'fall' && element.year == '1'){
+                        let option = document.createElement("option");
+                        option.setAttribute("value", element.id);
+                        option.innerHTML = element.name;
+                        input.appendChild(option);
+                    }
+                    
+                });
+            }
+        });
 
         //put together the card
         body.appendChild(input);
@@ -52,7 +66,17 @@ $(document).ready(function(){
 
         //append the card to row
         courseRow.appendChild(course);
-        
+
+
+    }
+
+    //remove course
+    function removeCourse(){
+
+     let course = document.getElementById(`course-${courseCount-1}`);
+     course.remove();
+     
+
     }
 
     btnAddCourse.addEventListener("click", function(){
@@ -60,18 +84,11 @@ $(document).ready(function(){
         addCourse(courseCount);
         courseCount++;
     });
+
+    btnRemoveCourse.addEventListener("click", function(){
+
+        removeCourse(courseCount);
+        courseCount--;
+    });
     
 });
-
-/*
-
-                <div class="card" id="course-id" style="width: 18rem;">
-                        <img class="card-img-top" src="http://via.placeholder.com/286x180" id="course-img-id" alt="Card image cap">
-                        <div class="card-body text-center" id="course-body-id">
-                            <select class="form-control" name="course[]">
-                                <option value="1">Course 1</option>
-                            </select>
-                        </div>
-                </div>
-
-                */

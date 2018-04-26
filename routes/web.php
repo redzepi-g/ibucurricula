@@ -20,3 +20,8 @@ Route::post('/department',[
     'uses' => 'BaseController@next',
     'as' => 'next'
 ]);
+
+Route::post('/department-spring',[
+    'uses' => 'BaseController@nextFirstSpring',
+    'as' => 'first-spring'
+]);

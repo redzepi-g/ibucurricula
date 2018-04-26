@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class Assistant extends Model
 {
-    protected $fillable = ['name', 'shortname'];
+    protected $fillable = ['name','course_id'];
 
     public function courses(){
 

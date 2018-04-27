@@ -567,9 +567,5 @@ class BaseController extends Controller
         return redirect()->route('index')->with('departments', $departments);
     }
 
-    //cpanel
-    public function cpanel(){
 
-        return view('cpanel.index');
-    }
 }

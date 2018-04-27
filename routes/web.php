@@ -72,7 +72,25 @@ Route::post('/completed',[
 
 // cpanel
 Route::get('/cpanel',[
-    'uses' => 'BaseController@cpanel',
+    'uses' => 'CPanelController@index',
     'as' => 'cpanel'
+]);
+
+//cpanel curricula
+Route::post('/cpanel-curriculum',[
+    'uses' => 'CPanelController@curriculum',
+    'as' => 'curriculum'
+]);
+
+//cpanel staff
+Route::post('/cpanel-staff',[
+    'uses' => 'CPanelController@staff',
+    'as' => 'staff'
+]);
+
+//cpanel courses
+Route::post('/cpanel-courses',[
+    'uses' => 'CPanelController@courses',
+    'as' => 'courses'
 ]);
 

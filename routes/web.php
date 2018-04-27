@@ -16,12 +16,63 @@ Route::get('/', [
     'as' => 'index'
 ]);
 
+//first fall
 Route::post('/department',[
     'uses' => 'BaseController@next',
     'as' => 'next'
 ]);
 
+//first fall-> first spring
 Route::post('/department-spring',[
     'uses' => 'BaseController@nextFirstSpring',
     'as' => 'first-spring'
 ]);
+
+//second fall
+Route::post('/department-second',[
+    'uses' => 'BaseController@secondFall',
+    'as' => 'second-fall'
+]);
+
+//second fall -> second spring
+Route::post('/department-second-spring',[
+    'uses' => 'BaseController@secondSpring',
+    'as' => 'second-spring'
+]);
+
+//third fall
+Route::post('/department-third',[
+    'uses' => 'BaseController@thirdFall',
+    'as' => 'third-fall'
+]);
+
+//third fall -> third spring
+Route::post('/department-third-spring',[
+    'uses' => 'BaseController@thirdSpring',
+    'as' => 'third-spring'
+]);
+
+//fourth fall
+Route::post('/department-fourth',[
+    'uses' => 'BaseController@fourthFall',
+    'as' => 'fourth-fall'
+]);
+
+//fourth fall -> fourth spring
+Route::post('/department-fourth-spring',[
+    'uses' => 'BaseController@fourthSpring',
+    'as' => 'fourth-spring'
+]);
+
+//fourth fall -> fourth spring
+Route::post('/completed',[
+    'uses' => 'BaseController@final',
+    'as' => 'final'
+]);
+
+// cpanel
+Route::get('/cpanel',[
+    'uses' => 'BaseController@cpanel',
+    'as' => 'cpanel'
+]);
+

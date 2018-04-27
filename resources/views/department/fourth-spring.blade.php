@@ -27,7 +27,7 @@
 
     <div class="col-md-2 bkg-gold extra-padding-25"> <!-- main col -->
         
-        <div class="year-box extra-padding-25 active"> <!-- first year -->
+        <div class="year-box extra-padding-25 "> <!-- first year -->
             
             <h3 class="text-center">I</h3>
             <br/>
@@ -54,7 +54,7 @@
 
         </div> <!--third year end -->
 
-        <div class="year-box extra-padding-25"> <!-- fourth year -->
+        <div class="year-box extra-padding-25 active"> <!-- fourth year -->
             
             <h3 class="text-center">IV</h3>
             <br/>
@@ -72,7 +72,7 @@
             <div class="col-md-12" id="course-col"> <!-- sub col -->
                 <p class="text-center font-italic text-capitalize">{{$semester}} Semester</p>
                 
-                <form action="{{route('second-fall')}}" method="post" id="course-form">
+                <form action="{{route('final')}}" method="post" id="course-form">
                     @csrf
                 <input type="hidden" name="year" value="{{$year}}" />
                 <input type="hidden" name="semester" value="{{$semester}}" />
@@ -111,5 +111,5 @@
 @endsection
 
 @section('customscripts')
-<script src="{{asset('js/tableControl-first-spring.js')}}"></script>
+<script src="{{asset('js/tableControl-fourth-spring.js')}}"></script>
 @endsection

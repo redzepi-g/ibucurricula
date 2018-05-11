@@ -130,12 +130,12 @@ class CPanelController extends Controller
         // Set document properties
         $spreadsheet->getProperties()->setCreator('IBU Office')
             ->setLastModifiedBy('IBU Office')
-            ->setTitle('Office 2007 XLSX Test Document')
-            ->setSubject('Office 2007 XLSX Test Document')
-            ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
-            ->setKeywords('office 2007 openxml php')
-            ->setCategory('Test result file');
-
+            ->setTitle('CE Curriculum for year 2018-2019')
+            ->setSubject('CE Curriculum for year 2018-2019')
+            ->setDescription('CE Curriculum for year 2018-2019')
+            ->setKeywords('ce curriculum year 2018 2019')
+            ->setCategory('Curriculum');
+            
         for($i = 3; $i<=$count+2; $i++){
 
         // Add some data
@@ -162,6 +162,108 @@ class CPanelController extends Controller
         
         $lastrow = $i;
         }
+
+        /* STYLE CELLS */
+
+        $spreadsheet->getActiveSheet()->mergeCells('A2:I2');
+        $spreadsheet->getActiveSheet()->getStyle('A2:I2')
+    ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+            $spreadsheet->getActiveSheet()->getStyle('A2:I2')
+        ->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+        $spreadsheet->getActiveSheet()->getStyle('A2:I2')
+            ->getFill()->getStartColor()->setARGB('109800');
+            $spreadsheet->getActiveSheet()->getStyle('A2:I2')
+            ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+            //
+            $spreadsheet->getActiveSheet()->mergeCells('A9:I9');
+            $spreadsheet->getActiveSheet()->getStyle('A9:I9')
+        ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                $spreadsheet->getActiveSheet()->getStyle('A9:I9')
+            ->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+            $spreadsheet->getActiveSheet()->getStyle('A9:I9')
+                ->getFill()->getStartColor()->setARGB('109800');
+                $spreadsheet->getActiveSheet()->getStyle('A9:I9')
+                ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+            //
+            $spreadsheet->getActiveSheet()->mergeCells('A16:I16');
+            $spreadsheet->getActiveSheet()->getStyle('A16:I16')
+        ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                $spreadsheet->getActiveSheet()->getStyle('A16:I16')
+            ->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+            $spreadsheet->getActiveSheet()->getStyle('A16:I16')
+                ->getFill()->getStartColor()->setARGB('109800');
+                $spreadsheet->getActiveSheet()->getStyle('A16:I16')
+                ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+                //
+
+                $spreadsheet->getActiveSheet()->mergeCells('A23:I23');
+                $spreadsheet->getActiveSheet()->getStyle('A23:I23')
+            ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                    $spreadsheet->getActiveSheet()->getStyle('A23:I23')
+                ->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+                $spreadsheet->getActiveSheet()->getStyle('A23:I23')
+                    ->getFill()->getStartColor()->setARGB('109800');
+                    $spreadsheet->getActiveSheet()->getStyle('A23:I23')
+                    ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+                    //
+
+                    $spreadsheet->getActiveSheet()->mergeCells('A30:I30');
+                    $spreadsheet->getActiveSheet()->getStyle('A30:I30')
+                ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                        $spreadsheet->getActiveSheet()->getStyle('A30:I30')
+                    ->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+                    $spreadsheet->getActiveSheet()->getStyle('A30:I30')
+                        ->getFill()->getStartColor()->setARGB('109800');
+                        $spreadsheet->getActiveSheet()->getStyle('A30:I30')
+                        ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+                        //
+
+                        $spreadsheet->getActiveSheet()->mergeCells('A37:I37');
+                        $spreadsheet->getActiveSheet()->getStyle('A37:I37')
+                    ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                            $spreadsheet->getActiveSheet()->getStyle('A37:I37')
+                        ->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+                        $spreadsheet->getActiveSheet()->getStyle('A37:I37')
+                            ->getFill()->getStartColor()->setARGB('109800');
+                            $spreadsheet->getActiveSheet()->getStyle('A37:I37')
+                            ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+                            //
+                            $spreadsheet->getActiveSheet()->mergeCells('A44:I44');
+                            $spreadsheet->getActiveSheet()->getStyle('A44:I44')
+                        ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                                $spreadsheet->getActiveSheet()->getStyle('A44:I44')
+                            ->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+                            $spreadsheet->getActiveSheet()->getStyle('A44:I44')
+                                ->getFill()->getStartColor()->setARGB('109800');
+                                $spreadsheet->getActiveSheet()->getStyle('A44:I44')
+                                ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+                                //
+
+                                $spreadsheet->getActiveSheet()->mergeCells('A51:I51');
+                                $spreadsheet->getActiveSheet()->getStyle('A51:I51')
+                            ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                                    $spreadsheet->getActiveSheet()->getStyle('A51:I51')
+                                ->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+                                $spreadsheet->getActiveSheet()->getStyle('A51:I51')
+                                    ->getFill()->getStartColor()->setARGB('109800');
+                                    $spreadsheet->getActiveSheet()->getStyle('A51:I51')
+                                    ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+                                    //
+        $spreadsheet->getActiveSheet()->getStyle('A1:I1')
+    ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+        $spreadsheet->getActiveSheet()->getStyle('A1:I1')
+        ->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+        $spreadsheet->getActiveSheet()->getStyle('A1:I1')
+            ->getFill()->getStartColor()->setARGB('0d4789');
+        $spreadsheet->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+        $spreadsheet->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+        $spreadsheet->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+        $spreadsheet->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
+        $spreadsheet->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
+        $spreadsheet->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
+        $spreadsheet->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
+
 
         $lastrow++;
         $c = $lastrow+1;
@@ -352,14 +454,14 @@ class CPanelController extends Controller
         }
 
         // Rename worksheet
-        $spreadsheet->getActiveSheet()->setTitle('CE Curriculum for 2018/2019');
+        $spreadsheet->getActiveSheet()->setTitle('CE Curriculum for 2018-2019');
 
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $spreadsheet->setActiveSheetIndex(0);
 
         // Redirect output to a client’s web browser (Xlsx)
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="01simple.xlsx"');
+        header('Content-Disposition: attachment;filename="ce-curriculum-2018-2019.xlsx"');
         header('Cache-Control: max-age=0');
         // If you're serving to IE 9, then the following may be needed
         header('Cache-Control: max-age=1');

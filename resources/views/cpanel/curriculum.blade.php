@@ -16,8 +16,8 @@
         <div class="row">
             <div class="col-md-12 extra-padding-25 text-center">
 
-                <a href="#" class="btn btn-danger">Print the curriculum to PDF file.</a>
-                <a href="#" class="btn btn-danger">Print the curriculum to Excel file.</a>
+               
+                <a href="#" class="btn btn-danger disabled">Print the curriculum to Excel file.</a>
             </div>
         </div>
 

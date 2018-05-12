@@ -8,11 +8,13 @@
         <div class="text-center">
                 <img src="{{asset('img/ibulogo.png')}}" class="img img-fluid" alt="ibu logo" width="70px" />
         </div>
+        
     </div>
 
 
     <div class="col-md-8 bkg-gold extra-padding-25">
         <h5 class="font-italic">Department: {{$department->name}}</h5>
+        <a href="{{route('index')}}" class="btn btn-danger"> &lt;Go back</a>
     </div>
 
     <div class="col-md-2  bkg-gold extra-padding-25">

@@ -82,6 +82,11 @@ Route::post('/cpanel-curriculum',[
     'as' => 'curriculum'
 ]);
 
+Route::get('/print-curriculum-{id}',[
+    'uses' => 'CPanelController@printCurriculum',
+    'as' => 'print-curriculum'
+]);
+
 //cpanel staff
 Route::post('/cpanel-staff',[
     'uses' => 'CPanelController@staff',

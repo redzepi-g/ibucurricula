@@ -4,7 +4,9 @@
 <div class="row">
 
     <div class="col-md-12 bkg-gold extra-padding-25">
+    <a href="{{route('cpanel')}}" class="btn btn-danger"> &lt;Go back</a>
         <div class="row">
+            
             <div class="col-md-6 mx-auto text-center">
                 <img src="{{asset('img/ibulogo.png')}}" class="img img-fluid" alt="ibulogo" width="200px"/>
             </div>
@@ -17,7 +19,7 @@
             <div class="col-md-12 extra-padding-25 text-center">
 
                
-                <a href="#" class="btn btn-danger disabled">Print the curriculum to Excel file.</a>
+                <a href="{{route('print-curriculum',['id' => $department->id ])}}" class="btn btn-danger">Print the curriculum to Excel file.</a>
             </div>
         </div>
 

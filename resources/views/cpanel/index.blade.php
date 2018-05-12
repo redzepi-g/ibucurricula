@@ -3,7 +3,7 @@
 @section('maincontent')
 <div class="row"><!-- row start -->
     <div class="col-md-12 bkg-gold extra-padding-25"> <!-- main col -->
-     
+    <a href="{{route('index')}}" class="btn btn-danger"> &lt;Go back</a>
         <div class="row extra-padding-25"><!-- sub row -->
             <div class="col-md-6 mx-auto text-center">
                 <img src="{{asset('img/ibulogo.png')}}" class="img img-fluid" alt="ibu logo" />

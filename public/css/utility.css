@@ -13,3 +13,6 @@
     padding:25px;
 }
 
+ul>li{
+    list-style: none;
+}

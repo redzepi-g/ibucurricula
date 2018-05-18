@@ -99,3 +99,12 @@ Route::post('/cpanel-courses',[
     'as' => 'courses'
 ]);
 
+Route::post('/add-course',[
+    'uses' => 'CPanelController@addCourse',
+    'as' => 'add-course'
+]);
+
+Route::get('/delete-course-{id}-{departmentId}',[
+    'uses' => 'CPanelController@deleteCourse',
+    'as' => 'delete-course'
+]);

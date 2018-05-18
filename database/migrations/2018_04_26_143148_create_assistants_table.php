@@ -17,6 +17,7 @@ class CreateAssistantsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('course_id')->nullable();
+            $table->integer('department_id')->nullable();
             $table->timestamps();
         });
     }

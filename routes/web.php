@@ -93,6 +93,40 @@ Route::post('/cpanel-staff',[
     'as' => 'staff'
 ]);
 
+Route::post('/staff-added',[
+    'uses' => 'CPanelController@addStaff',
+    'as' => 'add-staff'
+]);
+
+Route::get('/{professorId}-professor-deleted-{departmentId}',[
+    'uses' => 'CPanelController@deleteProfessor',
+    'as' => 'delete-professor'
+]);
+
+Route::get('/{assistantId}-assistant-deleted-{departmentId}',[
+    'uses' => 'CPanelController@deleteAssistant',
+    'as' => 'delete-assistant'
+]);
+
+Route::post('/edit-professor',[
+    'uses' => 'CPanelController@editProfessor',
+    'as' => 'edit-professor'
+]);
+
+Route::post('/edit-assistant',[
+    'uses' => 'CPanelController@editAssistant',
+    'as' => 'edit-assistant'
+]);
+
+Route::post('/updated-professor',[
+    'uses' => 'CPanelController@updateProfessor',
+    'as' => 'update-professor'
+]);
+
+Route::post('/updated-assistant', [
+    'uses' => 'CPanelController@updateAssistant',
+    'as' => 'update-assistant'
+]);
 //cpanel courses
 Route::post('/cpanel-courses',[
     'uses' => 'CPanelController@courses',

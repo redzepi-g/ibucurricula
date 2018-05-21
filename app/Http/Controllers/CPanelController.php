@@ -96,7 +96,190 @@ class CPanelController extends Controller
     }
 
     public function staff(Request $request){
+
+        $departmentId = $request->department;
+        $department = Department::find($departmentId);
+        $professors = $department->professors;
+        $assistants = $department->assistants;
+
+        return view('cpanel.staff')->with('department',$department)
+                                     ->with('professors', $professors)
+                                     ->with('assistants', $assistants);
+    }
+
+    public function addStaff(Request $request){
+
+        $departmentId = $request->departmentId;
+        $department = Department::find($departmentId);
+
+        //add staff
+        $role = $request->role;
+
+        if($role != 0){
+            
+            $assistant = new Assistant;
+
+            $assistant->name = $request->name;
+            $assistant->department_id = $departmentId;
+            $assistant->save();
+
+        }else{
+            
+            $professor = new Professor;
+            
+            $professor->name = $request->name;
+            $professor->department_id = $departmentId;
+            $professor->save();
+        }
+
+        $professors = $department->professors;
+        $assistants = $department->assistants;
+
+        return view('cpanel.staff')->with('department',$department)
+                                     ->with('professors', $professors)
+                                     ->with('assistants', $assistants);
+    }
+
+    public function deleteProfessor($professorId, $departmentId){
+
+        $professor = Professor::destroy($professorId);
+        $department = Department::find($departmentId);
+        $professors = $department->professors;
+        $assistants = $department->assistants;
+
+        return view('cpanel.staff')->with('department',$department)
+                                     ->with('professors', $professors)
+                                     ->with('assistants', $assistants);
+    }
+
+    public function deleteAssistant($assistantId, $departmentId){
         
+        $assistant = Assistant::destroy($assistantId);
+        $department = Department::find($departmentId);
+        $professors = $department->professors;
+        $assistants = $department->assistants;
+
+        return view('cpanel.staff')->with('department',$department)
+                                     ->with('professors', $professors)
+                                     ->with('assistants', $assistants);
+    }
+
+    public function editProfessor(Request $request){
+       
+        $professorId = $request->professorId;
+        $departmentId = $request->departmentId;
+        
+
+        $professor = Professor::find($professorId);
+        $department = Department::find($departmentId);
+        $professors = $department->professors;
+        $assistants = $department->assistants;
+
+        
+        $request->session()->flash('editProfessor', 'editting course');
+
+
+        return view('cpanel.staff')->with('department',$department)
+                                        ->with('professors', $professors)
+                                        ->with('assistants', $assistants)
+                                        ->with('editprofessor', $professor);
+    }
+
+    public function editAssistant(Request $request){
+       
+        $assistantId = $request->assistantId;
+        $departmentId = $request->departmentId;
+        
+
+        $assistant = Assistant::find($assistantId);
+        $department = Department::find($departmentId);
+        $professors = $department->professors;
+        $assistants = $department->assistants;
+
+        
+        $request->session()->flash('editAssistant', 'editting course');
+
+
+        return view('cpanel.staff')->with('department',$department)
+                                        ->with('professors', $professors)
+                                        ->with('assistants', $assistants)
+                                        ->with('editassistant', $assistant);
+    }
+
+    public function updateProfessor(Request $request){
+
+        $request->session()->forget('editProfessor');
+        $request->session()->forget('editAssistant');
+        $professorId = $request->professorId;
+        $departmentId = $request->departmentId;
+
+        $department = Department::find($departmentId);
+        $professors = $department->professors;
+        $assistants = $department->assistants;
+
+        $role = $request->role;
+
+        if($role != 0){
+            $professor = Professor::find($professorId);
+            $assistant = new Assistant;
+
+            $assistant->name = $professor->name;
+            $assistant->course_id = $professor->course_id;
+            $assistant->department_id = $professor->department_id;
+
+            $assistant->save();
+            $professor = Professor::destroy($professorId);
+
+            return view('cpanel.staff')->with('department',$department)
+            ->with('professors', $professors)
+            ->with('assistants', $assistants);
+
+        }else{
+            $professor = Professor::find($professorId);
+            $professor->name = $request->name;
+            $professor->save();
+            return view('cpanel.staff')->with('department',$department)
+            ->with('professors', $professors)
+            ->with('assistants', $assistants);
+        }
+    }
+
+    public function updateAssistant(Request $request){
+        
+        $request->session()->forget('editProfessor');
+        $request->session()->forget('editAssistant');
+
+        $assistantId = $request->assistantId;
+        $departmentId = $request->departmentId;
+
+        $department = Department::find($departmentId);
+        $professors = $department->professors;
+        $assistants = $department->assistants;
+
+        $role = $request->role;
+
+        if($role != 0){
+            $assistant = Assistant::find($assistantId);
+            $assistant->name = $request->name;
+            $assistant->save();
+
+            return view('cpanel.staff')->with('department',$department)
+            ->with('professors', $professors)
+            ->with('assistants', $assistants);
+
+        }else{
+            $assistant = Assistant::find($assistantId);
+            $professor = new Professor;
+            $professor->name = $assistant->name;
+            $professor->course_id = $assistant->course_id;
+            $professor->department_id = $assistant->department_id;
+           
+            $professor->save();
+            $assistant = Assistant::destroy($assistantId);
+            return view('cpanel.staff')->with('department',$department)
+            ->with('professors', $professors)
+            ->with('assistants', $assistants);
+        }
     }
 
 
@@ -232,6 +415,16 @@ class CPanelController extends Controller
         $course->assistant_id = $assistantId;
 
         $course->save();        
+
+        //update professor relationship
+        $professor = Professor::find($professorId);
+        $professor->course_id = $courseId;
+        $professor->save();
+
+        //update assistant relationship
+        $assistant = Assistant::find($assistantId);
+        $assistant->course_id = $courseId;
+        $assistant->save();
 
         $department = Department::find($departmentId);
         $courses = $department->courses;

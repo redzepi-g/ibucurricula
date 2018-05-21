@@ -16,3 +16,11 @@
 ul>li{
     list-style: none;
 }
+
+.btnLink{
+    background: none;
+    border: none;
+    color: green;
+    text-decoration: underline;
+    cursor: pointer; 
+}

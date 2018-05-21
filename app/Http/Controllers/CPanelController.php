@@ -102,6 +102,8 @@ class CPanelController extends Controller
 
     public function courses(Request $request){
 
+        $request->session()->forget('editCourse');
+
         $departmentId = $request->department;
         $department = Department::find($departmentId);
         $courses = $department->courses;
@@ -115,6 +117,8 @@ class CPanelController extends Controller
     }
 
     public function addCourse(Request $request){
+
+        $request->session()->forget('editCourse');
 
         $code = $request->code;
         $name = $request->name;
@@ -156,7 +160,7 @@ class CPanelController extends Controller
                                         ->with('professors', $professors)
                                         ->with('assistants', $assistants);
     }
-    public function deleteCourse($courseId, $departmentId){
+    public function deleteCourse(Request $request,$courseId, $departmentId){
         
         $course = Course::destroy($courseId);
         $department = Department::find($departmentId);
@@ -164,13 +168,83 @@ class CPanelController extends Controller
         $professors = $department->professors;
         $assistants = $department->assistants;
 
-
+        $request->session()->forget('editCourse');
 
         return view('cpanel.courses')->with('department',$department)
                                         ->with('courses', $courses)
                                         ->with('professors', $professors)
                                         ->with('assistants', $assistants);
 
+    }
+
+    public function editCourse(Request $request){
+
+        $courseId = $request->courseId;
+        $departmentId = $request->departmentId;
+        
+
+        $course = Course::find($courseId);
+        $department = Department::find($departmentId);
+        $courses = $department->courses;
+        $professors = $department->professors;
+        $assistants = $department->assistants;
+
+        
+        $request->session()->flash('editCourse', 'editting course');
+
+
+        return view('cpanel.courses')->with('department',$department)
+                                        ->with('courses', $courses)
+                                        ->with('professors', $professors)
+                                        ->with('assistants', $assistants)
+                                        ->with('editcourse', $course);
+    }
+
+    public function updateCourse(Request $request){
+
+        $courseId = $request->courseId;
+
+
+        $code = $request->code;
+        $name = $request->name;
+        $weeklyhours = $request->weeklyhours;
+        $ects = $request->ects;
+        $students = $request->students;
+        $comment = $request->comment;
+        $semester = $request->semester;
+        $year = $request->year;
+        $departmentId = $request->departmentId;
+        $professorId = $request->professorId;
+        $assistantId = $request->assistantId;
+
+        $course = Course::find($courseId);
+
+        $course->code = $code;
+        $course->name = $name;
+        $course->weeklyhours = $weeklyhours;
+        $course->ects = $ects;
+        $course->students = $students;
+        $course->comment = $comment;
+        $course->semester = $semester;
+        $course->year = $year;
+        $course->department_id = $departmentId;
+        $course->professor_id = $professorId;
+        $course->assistant_id = $assistantId;
+
+        $course->save();        
+
+        $department = Department::find($departmentId);
+        $courses = $department->courses;
+        $professors = $department->professors;
+        $assistants = $department->assistants;
+
+        
+        $request->session()->forget('editCourse');
+
+        return view('cpanel.courses')->with('department',$department)
+                                        ->with('courses', $courses)
+                                        ->with('professors', $professors)
+                                        ->with('assistants', $assistants);
     }
     public function printCurriculum(Request $request){
 

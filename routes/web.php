@@ -104,6 +104,16 @@ Route::post('/add-course',[
     'as' => 'add-course'
 ]);
 
+Route::post('/edit-course',[
+    'uses' => 'CPanelController@editCourse',
+    'as' => 'edit-course'
+]);
+
+Route::post('/updated-course',[
+    'uses' => 'CPanelController@updateCourse',
+    'as' => 'update-course'
+]);
+
 Route::get('/delete-course-{id}-{departmentId}',[
     'uses' => 'CPanelController@deleteCourse',
     'as' => 'delete-course'
